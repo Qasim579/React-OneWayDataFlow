@@ -1,8 +1,8 @@
-//sepration of responsibilities
 function Button(props){
+  const handleClick = () => props.Onclick(props.increment);
   return (
-  <button onClick = {props.Onclick}>
-      +1
+  <button onClick = {handleClick}>
+      +{props.increment}
       </button>
   );
 }
@@ -16,11 +16,13 @@ function Display(props){
 
 function App(){
   const [counter,setCounter] = useState(0);
-  const incrementCounter = () => setCounter(counter+1);
+  const incrementCounter = (incrementvalue) => setCounter(counter+incrementvalue);
   
   return (
   <div>
-      <Button  Onclick={incrementCounter}/>
+      <Button  Onclick={incrementCounter} increment={1} />
+      <Button  Onclick={incrementCounter} increment={5} />
+      <Button  Onclick={incrementCounter} increment={10} />
       <Display message = {counter} />
      
       </div>
